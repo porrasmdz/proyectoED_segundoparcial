@@ -66,7 +66,7 @@ public class TrieTree {
     }
 
 	    //recursion function, Time O(n), Space O(n), n is number of nodes in trie
-    private void helper(TrieNode node, List<String> res, String prefix) {		
+    public void helper(TrieNode node, List<String> res, String prefix) {		
         if (node.isIsWord() == true)  {
                 String word = prefix + node.getCharacter();
                 res.add(word.substring(1)); //skip the first space from root	
@@ -74,4 +74,10 @@ public class TrieTree {
         for (TrieNode child : node.getChildren()) 				
                 helper(child, res, prefix + node.getCharacter());						
     }
+
+    public TrieNode getRoot() {
+        return root;
+    }
+    
+    
 }
