@@ -50,7 +50,8 @@ public class TrieTree {
     }
     
     
-    private boolean search(String word){
+    
+    public boolean search(String word){
         TrieNode node = root;
         for (char c : word.toCharArray()) {
             if(node.getChild(c ) == null){
@@ -65,11 +66,10 @@ public class TrieTree {
         System.out.println(res);
     }
 
-	    //recursion function, Time O(n), Space O(n), n is number of nodes in trie
     private void helper(TrieNode node, List<String> res, String prefix) {		
         if (node.isIsWord() == true)  {
                 String word = prefix + node.getCharacter();
-                res.add(word.substring(1)); //skip the first space from root	
+                res.add(word.substring(1)); 
         }
         for (TrieNode child : node.getChildren()) 				
                 helper(child, res, prefix + node.getCharacter());						

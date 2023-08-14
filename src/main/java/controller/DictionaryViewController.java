@@ -1,4 +1,4 @@
-package com.mycompany.proyectoed_segundoparcial;
+package controller;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;

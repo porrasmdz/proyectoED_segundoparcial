@@ -16,7 +16,9 @@ public class TrieTest {
         tree.insert("Barcelona");
         tree.insert("Lewandoski");
         System.out.println(tree.remove("Hola"));
+        System.out.println(tree.search("Messi"));
         tree.print();
-    
+         
+        tree.remove("Messi");
     }
 }

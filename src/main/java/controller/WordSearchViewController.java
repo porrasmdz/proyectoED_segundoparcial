@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.mycompany.proyectoed_segundoparcial;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,13 +17,13 @@ import javafx.scene.control.Button;
  *
  * @author ANDRES PORRAS
  */
-public class PrefixSearchViewController implements Initializable {
+public class WordSearchViewController implements Initializable {
 
 
     @FXML
-    private Button searchButton;
+    private Button wordSearchButton;
     @FXML
-    private Button returnButton1;
+    private Button returnButton;
     /**
      * Initializes the controller class.
      */
@@ -33,11 +33,11 @@ public class PrefixSearchViewController implements Initializable {
     }    
     
     @FXML
-    private void searchWordsWIthPrefix(ActionEvent event) {
+    private void searchWords(ActionEvent event) {
     }
 
     @FXML
-    private void switchToMainMenu(ActionEvent event)  throws IOException {
+    private void switchToMainMenu(ActionEvent event) throws IOException {
         App.setRoot("mainmenu");
     }
 
