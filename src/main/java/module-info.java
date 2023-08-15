@@ -1,4 +1,4 @@
-module com.mycompany.proyectoed_segundoparcial {
+module controller {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;

@@ -66,12 +66,9 @@ public class TrieTree {
         System.out.println(res);
     }
 
-<<<<<<< HEAD
-    private void helper(TrieNode node, List<String> res, String prefix) {		
-=======
+
 	    //recursion function, Time O(n), Space O(n), n is number of nodes in trie
     public void helper(TrieNode node, List<String> res, String prefix) {		
->>>>>>> f69727154d6e49ca23dc442a8b93dc89f65cc11b
         if (node.isIsWord() == true)  {
                 String word = prefix + node.getCharacter();
                 res.add(word.substring(1)); 
