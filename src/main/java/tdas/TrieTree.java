@@ -67,7 +67,7 @@ public class TrieTree {
     }
 
 
-	    //recursion function, Time O(n), Space O(n), n is number of nodes in trie
+	    
     public void helper(TrieNode node, List<String> res, String prefix) {		
         if (node.isIsWord() == true)  {
                 String word = prefix + node.getCharacter();
@@ -79,6 +79,30 @@ public class TrieTree {
 
     public TrieNode getRoot() {
         return root;
+    }
+    
+    private void collectSuggestions(TrieNode node, String prefix, List<String> suggestions) {
+        if (node.isIsWord()) {
+            suggestions.add(prefix);
+        }
+        for (TrieNode child : node.getChildren()) {
+            collectSuggestions(child, prefix + child.getCharacter(), suggestions);
+        }
+    }
+    
+    public List<String> getSuggestions(String prefix) {
+        TrieNode node = root;
+        for (char c : prefix.toCharArray()) {
+            TrieNode child = node.getChild(c);
+            if (child == null) {
+                return new ArrayList<>(); // Retorna una lista vacía si no se encuentra el prefijo
+            }
+            node = child;
+        }
+        
+        List<String> suggestions = new ArrayList<>();
+        collectSuggestions(node, prefix, suggestions);
+        return suggestions;
     }
     
     
