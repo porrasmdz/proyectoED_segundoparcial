@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" stylesheets="@../files/styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <top>
       <AnchorPane prefHeight="132.0" prefWidth="954.0" BorderPane.alignment="CENTER">
          <children>
@@ -19,9 +20,25 @@
       <HBox prefHeight="356.0" prefWidth="806.0" BorderPane.alignment="CENTER">
          <children>
             <ListView fx:id="listView1" prefHeight="200.0" prefWidth="200.0" />
-            <ListView fx:id="listView2" prefHeight="200.0" prefWidth="200.0" />
-            <ListView fx:id="listView3" prefHeight="200.0" prefWidth="200.0" />
-            <ListView fx:id="listView4" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="356.0" prefWidth="531.0">
+               <children>
+                  <Button fx:id="btnSearch" layoutX="266.0" layoutY="74.0" mnemonicParsing="false" onAction="#search" text="SEARCH" />
+                  <TextField fx:id="txtSearch" layoutX="29.0" layoutY="73.0" prefHeight="18.0" prefWidth="222.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: steelblue; -fx-border-width: 0px 0px 3px 0px;" />
+                  <TextField fx:id="txtInsert" layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="222.0" promptText="Insert" style="-fx-background-color: transparent; -fx-border-color: darkSeaGreen; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button fx:id="btnInsert" layoutX="266.0" layoutY="28.0" mnemonicParsing="false" onAction="#insert" text="INSERT" />
+                  <TextField fx:id="txtRemove" layoutX="29.0" layoutY="127.0" prefHeight="18.0" prefWidth="222.0" promptText="Remove" style="-fx-background-color: transparent; -fx-border-color: indianred; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button layoutX="270.0" layoutY="141.0" mnemonicParsing="false" onAction="#remove" text="REMOVE" />
+                  <TextField fx:id="txtSearchByPrefix" layoutX="222.0" layoutY="208.0" prefHeight="18.0" prefWidth="222.0" promptText="Search by Prefix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button fx:id="btnSearchPreffix" layoutX="71.0" layoutY="209.0" mnemonicParsing="false" onAction="#searchByPreffix" text="SEARCH BY PREFFIX" />
+                  <TextField fx:id="txtSearchBySuffix" layoutX="222.0" layoutY="260.0" prefHeight="18.0" prefWidth="222.0" promptText="Search by Suffix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button fx:id="btnSearchSuffix" layoutX="71.0" layoutY="261.0" mnemonicParsing="false" onAction="#searchBySuffix" text="SEARCH BY SUFFIX" />
+                  <TextField fx:id="txtReverSearch" layoutX="222.0" layoutY="315.0" prefHeight="18.0" prefWidth="222.0" promptText="Reverse Search" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button fx:id="btnReverseSearch" layoutX="70.0" layoutY="316.0" mnemonicParsing="false" onAction="#reverseSearch" text="REVERSE SEARCH" />
+                  <TextField fx:id="txtSimilarWords" layoutX="222.0" layoutY="371.0" prefHeight="18.0" prefWidth="222.0" promptText="Search Similar Words" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                  <Button layoutX="71.0" layoutY="373.0" mnemonicParsing="false" onAction="#similarWords" text="SIMILAR WORDS" />
+               </children>
+            </AnchorPane>
+            <ListView fx:id="listViewResults" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
    </center>
@@ -32,6 +49,6 @@
       <AnchorPane prefHeight="356.0" prefWidth="82.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="123.0" prefWidth="954.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -1,0 +1,11 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 ago 2023, 3:39:02 p. m.
+    Author     : ASUS
+*/
+.list-cell:selected {
+    -fx-background-color: PowderBlue;
+}

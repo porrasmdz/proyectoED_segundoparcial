@@ -1,7 +1,5 @@
 cat
 cot
-yesterday
-tomorrow
 dog
 dot
 chair
@@ -34,8 +32,6 @@ drink
 drunk
 fruit
 suit
-shit
-sheet
 friend
 fiend
 game
@@ -54,3 +50,7 @@ weather
 feather
 suck
 fuck
+data
+date
+yellow
+hello
