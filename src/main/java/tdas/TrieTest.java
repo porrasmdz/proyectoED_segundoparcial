@@ -4,6 +4,10 @@
  */
 package tdas;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author ASUS
@@ -18,11 +22,26 @@ public class TrieTest {
         tree.insert("Beso");
         tree.insert("Bebe");
         tree.insert("Bebesita");
-        System.out.println(tree.remove("Hola"));
-        System.out.println(tree.search("Messi"));
+        tree.insert("Bola");
+        tree.insert("cola");
+        System.out.println(tree.getTotalWords());
         tree.print();
         System.out.println(tree.getSuggestions("B"));
         
         tree.remove("Messi");
+        System.out.println(tree.getTotalWords());
+        System.out.println(tree.countWordsPerLetter());
+        System.out.println(tree.countWordsByStartingLetter().toString());
+        System.out.println(tree.countWordsByEndingLetter().toString());
+        System.out.println(tree.createLengthHistogram());
+        
+        System.out.println(tree.getAllWords());
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        System.out.println(tree.searchBySuffix("ola"));
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        System.out.println(tree.getSimilarWords("Bola"));
+        System.out.println(tree.findSimilarity("Hola", "Barcelona"));
+        
     }
+    
 }
