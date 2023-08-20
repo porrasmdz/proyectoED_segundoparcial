@@ -71,15 +71,12 @@ public class TrieTree {
         helper(root, res, "" );
         System.out.println(res);
     }
-    
+    //get all words of trie tree
     public List<String> getAllWords(){
         List<String> res = new ArrayList<String>(); 
         helper(root, res, "" );
         return res;
     }
-
-
-	    
     public void helper(TrieNode node, List<String> res, String prefix) {		
         if (node.isIsWord() == true)  {
                 String word = prefix + node.getCharacter();
@@ -88,6 +85,7 @@ public class TrieTree {
         for (TrieNode child : node.getChildren()) 				
                 helper(child, res, prefix + node.getCharacter());						
     }
+    
 
     public TrieNode getRoot() {
         return root;
@@ -273,7 +271,7 @@ public class TrieTree {
         return T[m][n];
     }
  
-    public double findSimilarity(String string1, String string2) {
+    private double findSimilarity(String string1, String string2) {
         if (string1 == null || string2 == null) {
             throw new IllegalArgumentException("Strings must not be null");
         }

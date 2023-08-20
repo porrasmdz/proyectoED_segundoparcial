@@ -6,12 +6,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import tdas.TrieTree;
 
 public class MainMenuController {
@@ -36,10 +40,6 @@ public class MainMenuController {
     @FXML
     private Button btnSearchPreffix;
     @FXML
-    private TextField txtSearchBySuffix;
-    @FXML
-    private Button btnSearchSuffix;
-    @FXML
     private TextField txtReverSearch;
     @FXML
     private Button btnReverseSearch;
@@ -47,6 +47,8 @@ public class MainMenuController {
     private TextField txtSimilarWords;
     @FXML
     private ListView<String> listViewResults;
+    @FXML
+    private Label lblResults;
 
     public void initialize() throws IOException {
         trie = new TrieTree();
@@ -55,6 +57,12 @@ public class MainMenuController {
             trie.insert(w);
         }
         listView1.getItems().setAll(words);
+        txtSearchByPrefix.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                suggestions(newValue.toLowerCase());
+            }
+        });
         
     }   
     private void refreshlistview1(){
@@ -147,7 +155,7 @@ public class MainMenuController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("DICTIONARY");
                 alert.setTitle("INFORMATION");
                 alert.setContentText("'"+word.toLowerCase()+"'"+" has been removed from the dictionary");
@@ -162,17 +170,62 @@ public class MainMenuController {
 
     @FXML
     private void searchByPreffix(ActionEvent event) {
+        
     }
 
-    @FXML
-    private void searchBySuffix(ActionEvent event) {
-    }
 
     @FXML
     private void reverseSearch(ActionEvent event) {
+        lblResults.setText("Reverse Search");
+        String word = txtReverSearch.getText().toLowerCase();
+        List<String> wordListReverse = trie.searchBySuffix(word);
+        if(wordListReverse.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("DICTIONARY");
+                alert.setTitle("INFORMATION");
+                alert.setContentText("No results for "+"'"+word+"'");
+                alert.showAndWait();
+        }else{
+            listViewResults.getItems().setAll(wordListReverse);
+        }
+        txtReverSearch.clear();
+        
     }
 
     @FXML
     private void similarWords(ActionEvent event) {
+        lblResults.setText("Similar Words");
+        String word = txtSimilarWords.getText().toLowerCase();
+        List<String> similarWords = trie.getSimilarWords(word);
+        if(similarWords.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("DICTIONARY");
+                alert.setTitle("INFORMATION");
+                alert.setContentText("No similar words results for "+"'"+word+"'");
+                alert.showAndWait();
+        }else{
+            listViewResults.getItems().setAll(similarWords);
+        }
+        txtSimilarWords.clear();
+    }
+
+    @FXML
+    private void suggestions(KeyEvent event) {
+        lblResults.setText("Suggestions");
+        String word = txtSearchByPrefix.getText().toLowerCase();
+        System.out.println(word);
+        refreshTableViewResults(word);
+    }
+    
+    private void suggestions(String word) {
+        System.out.println(word);
+        List<String> suggestions = trie.getSuggestions(word);
+        System.out.println(suggestions);
+        listViewResults.getItems().setAll(suggestions);
+    }
+    
+    private void refreshTableViewResults(String word){
+        List<String> suggestions = trie.getSuggestions(word);
+        listViewResults.getItems().setAll(suggestions);
     }
 }

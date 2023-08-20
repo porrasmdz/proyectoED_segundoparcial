@@ -40,7 +40,6 @@ public class TrieTest {
         System.out.println(tree.searchBySuffix("ola"));
         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         System.out.println(tree.getSimilarWords("Bola"));
-        System.out.println(tree.findSimilarity("Hola", "Barcelona"));
         
     }
     

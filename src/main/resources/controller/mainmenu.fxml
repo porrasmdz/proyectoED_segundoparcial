@@ -13,6 +13,7 @@
       <AnchorPane prefHeight="132.0" prefWidth="954.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="465.0" layoutY="57.0" text="DICTIONARY" />
+            <Label fx:id="lblResults" layoutX="791.0" layoutY="101.0" />
          </children>
       </AnchorPane>
    </top>
@@ -28,10 +29,8 @@
                   <Button fx:id="btnInsert" layoutX="266.0" layoutY="28.0" mnemonicParsing="false" onAction="#insert" text="INSERT" />
                   <TextField fx:id="txtRemove" layoutX="29.0" layoutY="127.0" prefHeight="18.0" prefWidth="222.0" promptText="Remove" style="-fx-background-color: transparent; -fx-border-color: indianred; -fx-border-width: 0px 0px 3px 0px;" />
                   <Button layoutX="270.0" layoutY="141.0" mnemonicParsing="false" onAction="#remove" text="REMOVE" />
-                  <TextField fx:id="txtSearchByPrefix" layoutX="222.0" layoutY="208.0" prefHeight="18.0" prefWidth="222.0" promptText="Search by Prefix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                  <TextField fx:id="txtSearchByPrefix" layoutX="222.0" layoutY="208.0" onKeyPressed="#suggestions" prefHeight="18.0" prefWidth="222.0" promptText="Search by Prefix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
                   <Button fx:id="btnSearchPreffix" layoutX="71.0" layoutY="209.0" mnemonicParsing="false" onAction="#searchByPreffix" text="SEARCH BY PREFFIX" />
-                  <TextField fx:id="txtSearchBySuffix" layoutX="222.0" layoutY="260.0" prefHeight="18.0" prefWidth="222.0" promptText="Search by Suffix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
-                  <Button fx:id="btnSearchSuffix" layoutX="71.0" layoutY="261.0" mnemonicParsing="false" onAction="#searchBySuffix" text="SEARCH BY SUFFIX" />
                   <TextField fx:id="txtReverSearch" layoutX="222.0" layoutY="315.0" prefHeight="18.0" prefWidth="222.0" promptText="Reverse Search" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
                   <Button fx:id="btnReverseSearch" layoutX="70.0" layoutY="316.0" mnemonicParsing="false" onAction="#reverseSearch" text="REVERSE SEARCH" />
                   <TextField fx:id="txtSimilarWords" layoutX="222.0" layoutY="371.0" prefHeight="18.0" prefWidth="222.0" promptText="Search Similar Words" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
