@@ -1,4 +1,4 @@
-package controller;
+package com.mycompany.edproy2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.stage.Window;
 
 /**
  * JavaFX App
@@ -17,13 +18,16 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("mainmenu"), 953, 688);
+        scene = new Scene(loadFXML("main"), 1000, 800);
         stage.setScene(scene);
         stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+    static Window getRootWindow()  {
+        return scene.getWindow();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

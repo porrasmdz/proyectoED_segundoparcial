@@ -1,4 +1,4 @@
-package controller;
+package com.mycompany.edproy2;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;

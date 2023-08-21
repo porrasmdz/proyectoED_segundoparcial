@@ -1,6 +1,8 @@
-package controller;
+package com.mycompany.edproy2;
 
 import Utils.FileUtils;
+import static Utils.FileUtils1.loadTrie;
+import static Utils.FileUtils1.saveTrie;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,29 +28,37 @@ public class MainMenuController {
     @FXML
     private ListView<String> listView1;
     @FXML
-    private Button btnSearch;
-    @FXML
     private TextField txtSearch;
     @FXML
     private TextField txtInsert;
-    @FXML
-    private Button btnInsert;
     @FXML
     private TextField txtRemove;
     @FXML
     private TextField txtSearchByPrefix;
     @FXML
-    private Button btnSearchPreffix;
-    @FXML
     private TextField txtReverSearch;
-    @FXML
-    private Button btnReverseSearch;
     @FXML
     private TextField txtSimilarWords;
     @FXML
     private ListView<String> listViewResults;
     @FXML
     private Label lblResults;
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private Button btnSearchPreffix;
+    @FXML
+    private Button btnReverseSearch;
+    @FXML
+    private Button btnInsert;
+    @FXML
+    private Label wrdNormalResult;
+    @FXML
+    private Label wrdPrefixResult;
+    @FXML
+    private Label wrdInverseResult;
+    @FXML
+    private Label wrdApproxResult;
 
     public void initialize() throws IOException {
         trie = new TrieTree();
@@ -63,6 +73,7 @@ public class MainMenuController {
                 suggestions(newValue.toLowerCase());
             }
         });
+        resetResults();
         
     }   
     private void refreshlistview1(){
@@ -91,8 +102,10 @@ public class MainMenuController {
         String word = txtSearch.getText();
         if(words.contains(word.toLowerCase())){
             txtSearch.clear();
+            resetResults();
             listView1.getSelectionModel().select(word);
             listView1.scrollTo(words.indexOf(word.toLowerCase()));
+            wrdNormalResult.setText(word.toLowerCase());
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("DICTIONARY");
@@ -103,6 +116,13 @@ public class MainMenuController {
         
     }
 
+    private void resetResults(){
+        wrdNormalResult.setText("");
+        wrdPrefixResult.setText("");
+        wrdInverseResult.setText("");
+        wrdApproxResult.setText("");
+    }    
+    
     @FXML
     private void insert(ActionEvent event) {
         String word = txtInsert.getText();
@@ -186,7 +206,9 @@ public class MainMenuController {
                 alert.setContentText("No results for "+"'"+word+"'");
                 alert.showAndWait();
         }else{
+            resetResults();
             listViewResults.getItems().setAll(wordListReverse);
+            wrdInverseResult.setText(listViewResults.getItems().get(0));
         }
         txtReverSearch.clear();
         
@@ -204,7 +226,9 @@ public class MainMenuController {
                 alert.setContentText("No similar words results for "+"'"+word+"'");
                 alert.showAndWait();
         }else{
+            resetResults();
             listViewResults.getItems().setAll(similarWords);
+            wrdApproxResult.setText(listViewResults.getItems().get(0));
         }
         txtSimilarWords.clear();
     }
@@ -214,18 +238,51 @@ public class MainMenuController {
         lblResults.setText("Suggestions");
         String word = txtSearchByPrefix.getText().toLowerCase();
         System.out.println(word);
+        resetResults();
         refreshTableViewResults(word);
+        
     }
     
     private void suggestions(String word) {
         System.out.println(word);
         List<String> suggestions = trie.getSuggestions(word);
         System.out.println(suggestions);
+        
         listViewResults.getItems().setAll(suggestions);
+        
     }
     
     private void refreshTableViewResults(String word){
         List<String> suggestions = trie.getSuggestions(word);
         listViewResults.getItems().setAll(suggestions);
+        if(!suggestions.isEmpty())
+        {
+            wrdPrefixResult.setText(suggestions.get(0));
+        }
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        try {
+            App.setRoot("main");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void downloadDict(ActionEvent event) {
+        saveTrie(trie,App.getRootWindow());
+    }
+
+    @FXML
+    private void deleteDict(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void uploadDict(ActionEvent event) throws IOException {
+        loadTrie(App.getRootWindow());
+        App.setRoot("mainmenu");
     }
 }

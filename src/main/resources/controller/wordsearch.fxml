@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WordSearchViewController">
+<VBox alignment="CENTER" spacing="20.0"  xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WordSearchViewController">
    <children>
       <Label text="Búsqueda por Palabra" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
