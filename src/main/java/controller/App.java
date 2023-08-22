@@ -1,4 +1,4 @@
-package com.mycompany.edproy2;
+package controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

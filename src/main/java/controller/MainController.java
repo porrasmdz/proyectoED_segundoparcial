@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.mycompany.edproy2;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +21,8 @@ public class MainController implements Initializable {
 
     @FXML
     private Button statsButton;
+    @FXML
+    private Button BtnJuego;
     @FXML
     private Button exitButton;
 
@@ -45,6 +47,15 @@ public class MainController implements Initializable {
     private void goStats(ActionEvent event) {
          try {
             App.setRoot("statspanel");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void goPlay(ActionEvent event) {
+        try {
+            App.setRoot("game");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
