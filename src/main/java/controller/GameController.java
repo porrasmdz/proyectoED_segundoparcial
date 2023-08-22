@@ -4,26 +4,17 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import javafx.scene.control.Button;
 /**
  * FXML Controller class
  *
- * @author ANDRES PORRAS
+ * @author ASUS
  */
-public class WordSearchViewController implements Initializable {
+public class GameController implements Initializable {
 
-
-    @FXML
-    private Button wordSearchButton;
-    @FXML
-    private Button returnButton;
     /**
      * Initializes the controller class.
      */
@@ -32,13 +23,4 @@ public class WordSearchViewController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    private void searchWords(ActionEvent event) {
-    }
-
-    @FXML
-    private void switchToMainMenu(ActionEvent event) throws IOException {
-        App.setRoot("mainmenu");
-    }
-
 }

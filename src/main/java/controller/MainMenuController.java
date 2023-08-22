@@ -1,4 +1,4 @@
-package com.mycompany.edproy2;
+package controller;
 
 import Utils.FileUtils;
 import static Utils.FileUtils1.loadTrie;
