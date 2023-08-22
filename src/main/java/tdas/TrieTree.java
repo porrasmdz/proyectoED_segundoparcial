@@ -7,6 +7,7 @@ package tdas;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -295,7 +296,40 @@ public class TrieTree {
         return similarWords;
     }
     
+        
+    //Game
+    public Set<Character> getLettersForGame(char letter) {
+        TrieNode node = root;
+        for (TrieNode child : node.getChildren()) {
+            if (child.getCharacter() == letter) {
+                node = child;
+                break;
+            }
+        }
 
+        Set<Character> charactersInSubtree = new HashSet<>();
+        if (node != null) {
+            collectLettersSubtree(node, charactersInSubtree);
+        }
+
+        return charactersInSubtree;
+    }
+
+    private void collectLettersSubtree(TrieNode node, Set<Character> charactersInSubtree) {
+        charactersInSubtree.add(node.getCharacter());        
+        for (TrieNode child : node.getChildren()) {
+            collectLettersSubtree(child, charactersInSubtree);
+        }
+    }
+    public List<Character> getListCharacters(){
+        List<Character> letters = new ArrayList<>();
+        for (TrieNode child : root.getChildren()) {
+            letters.add(child.getCharacter());
+        }
+        return letters;
+    }
+    
+    
 
 
 

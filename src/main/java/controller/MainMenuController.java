@@ -10,14 +10,19 @@ import java.util.LinkedList;
 import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import tdas.TrieTree;
 
 public class MainMenuController {
@@ -59,6 +64,18 @@ public class MainMenuController {
     private Label wrdInverseResult;
     @FXML
     private Label wrdApproxResult;
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private Tab tabPrefix;
+    @FXML
+    private Tab tabReverse;
+    @FXML
+    private Tab tabAprox;
+    @FXML
+    private Tab tabSearch;
+    @FXML
+    private ListView<String> listComplete;
 
     public void initialize() throws IOException {
         trie = new TrieTree();
@@ -70,12 +87,28 @@ public class MainMenuController {
         txtSearchByPrefix.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                suggestions(newValue.toLowerCase());
+                suggestions(newValue);
             }
         });
         resetResults();
         
+        tabPrefix.setOnSelectionChanged(event -> {
+            tabPane.setVisible(tabPrefix.isSelected());
+        });
+        tabReverse.setOnSelectionChanged(event -> {
+            tabPane.setVisible(tabReverse.isSelected());
+        });
+        tabAprox.setOnSelectionChanged(event -> {
+            tabPane.setVisible(tabAprox.isSelected());
+        });
+        
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Filtra y muestra las sugerencias de autocompletado
+            showAutoCompleteSuggestions(newValue);
+        });
+
     }   
+    
     private void refreshlistview1(){
         words = FileUtils.loadWords();
         for(String w:words){
@@ -85,27 +118,16 @@ public class MainMenuController {
         
     }
 
-    private void switchToWordSearch() throws IOException {
-        App.setRoot("wordsearch");
-    }
-
-    private void switchToPrefixSearch(ActionEvent event)  throws IOException {
-        App.setRoot("prefixsearch");
-    }
-
-    private void switchToDictView(ActionEvent event) throws IOException {
-        App.setRoot("dictionaryview");
-    }
-
     @FXML
     private void search(ActionEvent event) {
         String word = txtSearch.getText();
-        if(words.contains(word.toLowerCase())){
+        
+        if(words.contains(word)){
             txtSearch.clear();
             resetResults();
             listView1.getSelectionModel().select(word);
-            listView1.scrollTo(words.indexOf(word.toLowerCase()));
-            wrdNormalResult.setText(word.toLowerCase());
+            listView1.scrollTo(words.indexOf(word));
+            wrdNormalResult.setText(word);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("DICTIONARY");
@@ -126,7 +148,7 @@ public class MainMenuController {
     @FXML
     private void insert(ActionEvent event) {
         String word = txtInsert.getText();
-        if(words.contains(word.toLowerCase())){
+        if(words.contains(word)){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("DICTIONARY");
             alert.setTitle("ERROR");
@@ -134,7 +156,7 @@ public class MainMenuController {
             alert.showAndWait();
         }else{
             if(!word.isEmpty()) {
-                trie.insert(word.toLowerCase());
+                trie.insert(word);
                 try{
                     FileWriter fw = new FileWriter("src/main/resources/files/words.txt",true);
                     BufferedWriter bw = new BufferedWriter(fw);
@@ -155,7 +177,7 @@ public class MainMenuController {
     @FXML
     private void remove(ActionEvent event) {
         String word = txtRemove.getText();
-        if(!words.contains(word.toLowerCase())){
+        if(!words.contains(word)){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("DICTIONARY");
             alert.setTitle("ERROR");
@@ -163,8 +185,8 @@ public class MainMenuController {
             alert.showAndWait();
         }else{
             if(!word.isEmpty()) {
-                trie.remove(word.toLowerCase());
-                words.remove(word.toLowerCase());
+                trie.remove(word);
+                words.remove(word);
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/files/words.txt"))) {
                     for (int i = 0; i < words.size(); i++) {
                         writer.write(words.get(i));
@@ -178,7 +200,7 @@ public class MainMenuController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("DICTIONARY");
                 alert.setTitle("INFORMATION");
-                alert.setContentText("'"+word.toLowerCase()+"'"+" has been removed from the dictionary");
+                alert.setContentText("'"+word+"'"+" has been removed from the dictionary");
                 alert.showAndWait();
             }
         }refreshlistview1();
@@ -197,7 +219,7 @@ public class MainMenuController {
     @FXML
     private void reverseSearch(ActionEvent event) {
         lblResults.setText("Reverse Search");
-        String word = txtReverSearch.getText().toLowerCase();
+        String word = txtReverSearch.getText();
         List<String> wordListReverse = trie.searchBySuffix(word);
         if(wordListReverse.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -207,8 +229,9 @@ public class MainMenuController {
                 alert.showAndWait();
         }else{
             resetResults();
+            
             listViewResults.getItems().setAll(wordListReverse);
-            wrdInverseResult.setText(listViewResults.getItems().get(0));
+            listViewResults.setOnMouseClicked(this::ClickReverse);
         }
         txtReverSearch.clear();
         
@@ -217,7 +240,7 @@ public class MainMenuController {
     @FXML
     private void similarWords(ActionEvent event) {
         lblResults.setText("Similar Words");
-        String word = txtSimilarWords.getText().toLowerCase();
+        String word = txtSimilarWords.getText();
         List<String> similarWords = trie.getSimilarWords(word);
         if(similarWords.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -228,7 +251,8 @@ public class MainMenuController {
         }else{
             resetResults();
             listViewResults.getItems().setAll(similarWords);
-            wrdApproxResult.setText(listViewResults.getItems().get(0));
+            listViewResults.setOnMouseClicked(this::ClickAprox);
+            
         }
         txtSimilarWords.clear();
     }
@@ -236,7 +260,7 @@ public class MainMenuController {
     @FXML
     private void suggestions(KeyEvent event) {
         lblResults.setText("Suggestions");
-        String word = txtSearchByPrefix.getText().toLowerCase();
+        String word = txtSearchByPrefix.getText();
         System.out.println(word);
         resetResults();
         refreshTableViewResults(word);
@@ -257,7 +281,7 @@ public class MainMenuController {
         listViewResults.getItems().setAll(suggestions);
         if(!suggestions.isEmpty())
         {
-            wrdPrefixResult.setText(suggestions.get(0));
+            listViewResults.setOnMouseClicked(this::ClickPrefix);
         }
     }
 
@@ -284,5 +308,50 @@ public class MainMenuController {
     private void uploadDict(ActionEvent event) throws IOException {
         loadTrie(App.getRootWindow());
         App.setRoot("mainmenu");
+    }
+
+    private void showAutoCompleteSuggestions(String newValue) {
+        ObservableList<String> autoCompleteSuggestions = FXCollections.observableArrayList();
+
+        // Filtra las sugerencias de autocompletado basadas en el texto ingresado
+        for (String suggestion : trie.getSuggestions(newValue)) {
+            if (suggestion.startsWith(newValue)) {
+                autoCompleteSuggestions.add(suggestion);
+            }
+        }
+
+        // Actualiza las sugerencias en el ListView y muestra u oculta el ListView según sea necesario
+        listComplete.setItems(autoCompleteSuggestions);
+        listComplete.setVisible(!autoCompleteSuggestions.isEmpty());
+        
+        listComplete.setOnMouseClicked(event -> {
+                String selectedWord = listComplete.getSelectionModel().getSelectedItem();
+                if (selectedWord != null) {
+                    txtSearch.setText(selectedWord);
+                    btnSearch.fire();
+
+                    listComplete.setVisible(false);
+                }
+            });
+        }
+
+    private void ClickAprox(MouseEvent t) {
+        String selectedItem = listViewResults.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            wrdApproxResult.setText(selectedItem);
+        }        
+    }
+
+    private void ClickPrefix(MouseEvent t) {     
+        String selectedItem = listViewResults.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+             wrdPrefixResult.setText(selectedItem);
+        }
+    }
+        private void ClickReverse(MouseEvent t) {     
+        String selectedItem = listViewResults.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+             wrdInverseResult.setText(selectedItem);
+        }
     }
 }

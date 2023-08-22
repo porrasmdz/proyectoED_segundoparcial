@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" stylesheets="@../files/styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" stylesheets="@../files/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.grupo9.MainMenuController">
    <top>
       <ToolBar prefHeight="40.0">
         <items>
@@ -38,7 +38,7 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Búsqueda Normal">
+          <Tab fx:id="tabSearch" text="Búsqueda Normal">
                <content>
                   <AnchorPane prefHeight="496.0" prefWidth="213.0">
                      <children>
@@ -66,6 +66,7 @@
                               <Font name="Calibri Italic" size="28.0" />
                            </font>
                         </Label>
+                        <ListView fx:id="listComplete" visible="false"  layoutX="14.0" layoutY="72.0" prefHeight="180.0" prefWidth="393.0" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -73,7 +74,7 @@
                   </AnchorPane>
                </content>
           </Tab>
-          <Tab text="Búsqueda Prefijo">
+          <Tab fx:id="tabPrefix" text="Búsqueda Prefijo">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -97,7 +98,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Búsqueda Inversa">
+            <Tab fx:id="tabReverse" text="Búsqueda Inversa">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -121,7 +122,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Búsqueda Aproximada">
+            <Tab fx:id="tabAprox" text="Búsqueda Aproximada">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -202,7 +203,7 @@
       </TabPane>
    </left>
    <right>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" visible="false" BorderPane.alignment="CENTER">
         <tabs>
           <Tab closable="false" text="Sugerencias">
                <content>

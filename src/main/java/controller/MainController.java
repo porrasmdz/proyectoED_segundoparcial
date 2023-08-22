@@ -22,6 +22,8 @@ public class MainController implements Initializable {
     @FXML
     private Button statsButton;
     @FXML
+    private Button BtnJuego;
+    @FXML
     private Button exitButton;
 
     /**
@@ -45,6 +47,15 @@ public class MainController implements Initializable {
     private void goStats(ActionEvent event) {
          try {
             App.setRoot("statspanel");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void goPlay(ActionEvent event) {
+        try {
+            App.setRoot("game");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
