@@ -98,12 +98,12 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="tabReverse" style="-fx-background-color: #B0F2FF;" text="Inverse Search">
+            <Tab fx:id="tabReverse" style="-fx-background-color: #B0CEFF;" text="Inverse Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtReverSearch" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="402.0" promptText="Write to search a o word by suffix" style="-fx-background-color: transparent; -fx-border-color: #B0F2FF; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button fx:id="btnReverseSearch" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#reverseSearch" style="-fx-background-color: #B0F2FF;" text="Search">
+                        <TextField fx:id="txtReverSearch" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="402.0" promptText="Write to search a word by suffix" style="-fx-background-color: transparent; -fx-border-color: steelblue; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button fx:id="btnReverseSearch" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#reverseSearch" style="-fx-background-color: #B0CEFF;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
@@ -122,12 +122,12 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="tabAprox" style="-fx-background-color: B2FFB0;" text="Fuzzy Search">
+            <Tab fx:id="tabAprox" style="-fx-background-color: #CAB0FF;" text="Fuzzy Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtSimilarWords" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="399.0" promptText="Write to search a similar word" style="-fx-background-color: transparent; -fx-border-color: B2FFB0; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#similarWords" style="-fx-background-color: B2FFB0;" text="Search">
+                        <TextField fx:id="txtSimilarWords" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="399.0" promptText="Write to search a similar word" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#similarWords" style="-fx-background-color: #CAB0FF;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
@@ -146,7 +146,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab style="-fx-background-color: #FFFEB0;" text="Options">
+            <Tab style="-fx-background-color: #B0CEFF;" text="Options">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

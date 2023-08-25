@@ -11,10 +11,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #407235;
 }
 .chart-bar.series0 {
-    -fx-bar-fill: #407235;
+    -fx-bar-fill:  #624200;
 }
 
 /* Color para la segunda serie */
 .chart-bar.series1 {
-    -fx-bar-fill: #407235;
+    -fx-bar-fill:  #624200;
 }

@@ -4,6 +4,7 @@
  */
 package tdas;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,11 @@ public class TrieTest {
         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         System.out.println(tree.getSimilarWords("Bola"));
         
+        Iterator<String> it= tree.iterator();
+        
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
     
 }

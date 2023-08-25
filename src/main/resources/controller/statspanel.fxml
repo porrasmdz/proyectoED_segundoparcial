@@ -22,13 +22,13 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="974.0" style="-fx-background-color: #E2FFDC;" stylesheets="@../files/stylesStatistics.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatspanelController">
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #E2FFDC;" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFF5E0;" BorderPane.alignment="CENTER">
         <items>
-          <Button minWidth="100.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #62BC4F;" text="BACK">
+          <Button minWidth="100.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #624200;" text="BACK" textFill="WHITE">
                <font>
-                  <Font name="Calibri" size="18.0" />
+                  <Font name="Calibri Bold" size="18.0" />
                </font></Button>
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="486.0" style="-fx-background-color: #E2FFDC;">
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="486.0" style="-fx-background-color: #FFF5E0;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTICS PANEL" textAlignment="CENTER" wrappingWidth="824.765625">
                      <font>
@@ -41,7 +41,7 @@
       </ToolBar>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="970.0" prefWidth="127.0" style="-fx-background-color: #E2FFDC;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="970.0" prefWidth="127.0" style="-fx-background-color: #FFF5E0;" BorderPane.alignment="CENTER">
          <children>
             <Label prefHeight="79.0" prefWidth="100.0" text="Words by initial:" wrapText="true">
                <font>
@@ -61,11 +61,11 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="677.0" prefWidth="847.0" style="-fx-background-color: #E2FFDC;" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="677.0" prefWidth="847.0" style="-fx-background-color: #FFF5E0;" BorderPane.alignment="CENTER">
         <content>
-            <VBox prefHeight="582.0" prefWidth="843.0" style="-fx-background-color: #E2FFDC;">
+            <VBox prefHeight="582.0" prefWidth="843.0" style="-fx-background-color: #FFF5E0;">
                <children>
-                  <GridPane prefHeight="243.0" prefWidth="883.0" style="-fx-background-color: #E2FFDC;">
+                  <GridPane prefHeight="243.0" prefWidth="883.0" style="-fx-background-color: #FFF5E0;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,7 +75,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #B0FF9F;">
+                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFF5E0;">
                            <children>
                               <Label text="Total Stored words:">
                                  <font>
@@ -89,7 +89,7 @@
                               </Text>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E2FFDC;" GridPane.columnIndex="1">
+                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFF5E0;" GridPane.columnIndex="1">
                            <children>
                               <Label text="Total Stored Letters:">
                                  <font>
@@ -103,7 +103,7 @@
                               </Text>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E2FFDC;" GridPane.rowIndex="1">
+                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFF5E0;" GridPane.rowIndex="1">
                            <children>
                               <Label text="Initial Letters:">
                                  <font>
@@ -117,7 +117,7 @@
                               </Text>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #B0FF9F;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFF5E0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <Label text="Average Word Size:">
                                  <font>
@@ -136,12 +136,12 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </GridPane>
-                  <StackedBarChart fx:id="stackedBarChart" prefHeight="466.0" prefWidth="843.0" style="-fx-background-color: #E2FFDC;" stylesheets="@../files/stylesStatistics.css" title="Frequency of Lengths">
+                  <StackedBarChart fx:id="stackedBarChart" prefHeight="466.0" prefWidth="843.0" style="-fx-background-color: #FFF5E0;" stylesheets="@../files/stylesStatistics.css" title="Frequency of Lengths">
                     <xAxis>
-                      <CategoryAxis fx:id="categoryAxis" side="BOTTOM" style="-fx-background-color: #E2FFDC;" />
+                      <CategoryAxis fx:id="categoryAxis" side="BOTTOM" style="-fx-background-color: #FFF5E0;" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="totalAxis" side="LEFT" style="-fx-background-color: #E2FFDC;" />
+                      <NumberAxis fx:id="totalAxis" side="LEFT" style="-fx-background-color: #FFF5E0;" />
                     </yAxis>
                      <VBox.margin>
                         <Insets top="24.0" />
@@ -156,6 +156,6 @@
       <AnchorPane prefHeight="638.0" prefWidth="0.0" style="-fx-background-color: .scroll-pane {    -fx-background-color: green;};" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <AnchorPane prefHeight="97.0" prefWidth="974.0" style="-fx-background-color: .scroll-pane {    -fx-background-color: green;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="97.0" prefWidth="974.0" style="-fx-background-color: #FFF5E0;" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
