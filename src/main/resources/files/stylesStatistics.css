@@ -1,0 +1,20 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 24 ago 2023, 8:03:59 p. m.
+    Author     : ASUS
+*/
+
+.table-row-cell:selected {
+    -fx-background-color: #407235;
+}
+.chart-bar.series0 {
+    -fx-bar-fill: #407235;
+}
+
+/* Color para la segunda serie */
+.chart-bar.series1 {
+    -fx-bar-fill: #407235;
+}

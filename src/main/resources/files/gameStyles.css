@@ -1,0 +1,9 @@
+
+.label {
+    -fx-font-size: 38px;
+    -fx-font-family: lillitaOne;
+    -fx-font-weight: bold;
+    -fx-text-fill: steelblue;
+    -fx-effect: dropshadow( gaussian , #E0FFFF , 0,0,0,1 );
+}
+

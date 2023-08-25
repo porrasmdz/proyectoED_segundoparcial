@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Queue;
 import java.util.Set;
 
 /**
  *
  * @author ASUS
  */
-public class TrieTree {
+public class TrieTree implements Iterable<String>{
     private TrieNode root;
     
     
@@ -27,7 +30,7 @@ public class TrieTree {
     
     
     public boolean insert(String word){
-        if(this.search(word) == true){
+        if(this.search(word)){
             return false;
         }
         TrieNode node = this.root;
@@ -329,11 +332,26 @@ public class TrieTree {
         return letters;
     }
     
-    
+    @Override
+    public Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private List<String> allWords = getAllWords();
+            private int currentIndex = 0;
 
+            @Override
+            public boolean hasNext() {
+                return currentIndex < allWords.size();
+            }
 
-
-
+            @Override
+            public String next() {
+                if (hasNext()) {
+                    return allWords.get(currentIndex++);
+                }
+                return null;
+            }
+        };
+    }
 
     
 }

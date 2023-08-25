@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" stylesheets="@../files/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.grupo9.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="953.0" style="-fx-background-color: #F8EFFF;" stylesheets="@../files/styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <top>
-      <ToolBar prefHeight="40.0">
+      <ToolBar prefHeight="40.0" style="-fx-background-color: #F8EFFF;">
         <items>
-          <Button minWidth="100.0" mnemonicParsing="false" onAction="#goBack" text="Volver">
+          <Button minWidth="100.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #EDB0FF;" text="BACK">
                <font>
                   <Font name="Calibri" size="18.0" />
                </font></Button>
@@ -38,7 +38,7 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab fx:id="tabSearch" text="Búsqueda Normal">
+          <Tab fx:id="tabSearch" style="-fx-background-color: #B0CEFF;" text="Normal Search">
                <content>
                   <AnchorPane prefHeight="496.0" prefWidth="213.0">
                      <children>
@@ -50,13 +50,13 @@
                <content>
                   <AnchorPane prefHeight="356.0" prefWidth="531.0">
                      <children>
-                        <Button fx:id="btnSearch" layoutX="439.0" layoutY="41.0" minWidth="100.0" mnemonicParsing="false" onAction="#search" text="Buscar">
+                        <Button fx:id="btnSearch" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #B0CEFFB0;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtSearch" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="393.0" promptText="Búsqueda Exacta" style="-fx-background-color: transparent; -fx-border-color: steelblue; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Label layoutX="14.0" layoutY="260.0" text="Palabra Escogida:">
+                        <TextField fx:id="txtSearch" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="393.0" promptText="Write to search" style="-fx-background-color: transparent; -fx-border-color: steelblue; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Label layoutX="14.0" layoutY="260.0" text="Chosen Word:">
                            <font>
                               <Font name="Calibri Bold" size="24.0" />
                            </font>
@@ -66,7 +66,7 @@
                               <Font name="Calibri Italic" size="28.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="listComplete" visible="false"  layoutX="14.0" layoutY="72.0" prefHeight="180.0" prefWidth="393.0" />
+                        <ListView fx:id="listComplete" layoutX="14.0" layoutY="72.0" prefHeight="180.0" prefWidth="393.0" visible="false" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -74,17 +74,17 @@
                   </AnchorPane>
                </content>
           </Tab>
-          <Tab fx:id="tabPrefix" text="Búsqueda Prefijo">
+          <Tab fx:id="tabPrefix" style="-fx-background-color: #CAB0FF;" text="Prefix Search">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtSearchByPrefix" layoutX="14.0" layoutY="41.0" onKeyPressed="#suggestions" prefHeight="28.0" prefWidth="396.0" promptText="Buscar por prefijo" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button fx:id="btnSearchPreffix" layoutX="439.0" layoutY="38.0" minWidth="100.0" mnemonicParsing="false" onAction="#searchByPreffix" text="Buscar">
+                        <TextField fx:id="txtSearchByPrefix" layoutX="14.0" layoutY="44.0" onKeyPressed="#suggestions" prefHeight="28.0" prefWidth="396.0" promptText="Write to search by prefix" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button fx:id="btnSearchPreffix" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#searchByPreffix" style="-fx-background-color: #CAB0FF;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="14.0" layoutY="260.0" text="Palabra Escogida:">
+                        <Label layoutX="14.0" layoutY="260.0" text="Chosen Word:">
                            <font>
                               <Font name="Calibri Bold" size="24.0" />
                            </font>
@@ -98,17 +98,17 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="tabReverse" text="Búsqueda Inversa">
+            <Tab fx:id="tabReverse" style="-fx-background-color: #B0F2FF;" text="Inverse Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtReverSearch" layoutX="14.0" layoutY="43.0" prefHeight="28.0" prefWidth="402.0" promptText="Búsqueda Inversa" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button fx:id="btnReverseSearch" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#reverseSearch" text="Buscar">
+                        <TextField fx:id="txtReverSearch" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="402.0" promptText="Write to search a o word by suffix" style="-fx-background-color: transparent; -fx-border-color: #B0F2FF; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button fx:id="btnReverseSearch" layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#reverseSearch" style="-fx-background-color: #B0F2FF;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="14.0" layoutY="260.0" text="Palabra Escogida:">
+                        <Label layoutX="14.0" layoutY="260.0" text="Chosen Word:">
                            <font>
                               <Font name="Calibri Bold" size="24.0" />
                            </font>
@@ -122,17 +122,17 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="tabAprox" text="Búsqueda Aproximada">
+            <Tab fx:id="tabAprox" style="-fx-background-color: B2FFB0;" text="Fuzzy Search">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtSimilarWords" layoutX="14.0" layoutY="40.0" prefHeight="28.0" prefWidth="399.0" promptText="Búsqueda por Similitud" style="-fx-background-color: transparent; -fx-border-color: mediumpurple; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button layoutX="439.0" layoutY="37.0" minWidth="100.0" mnemonicParsing="false" onAction="#similarWords" text="Buscar">
+                        <TextField fx:id="txtSimilarWords" layoutX="14.0" layoutY="44.0" prefHeight="28.0" prefWidth="399.0" promptText="Write to search a similar word" style="-fx-background-color: transparent; -fx-border-color: B2FFB0; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button layoutX="439.0" layoutY="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#similarWords" style="-fx-background-color: B2FFB0;" text="Search">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="14.0" layoutY="260.0" text="Palabra Escogida:">
+                        <Label layoutX="14.0" layoutY="260.0" text="Chosen Word:">
                            <font>
                               <Font name="Calibri Bold" size="24.0" />
                            </font>
@@ -146,33 +146,33 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Configuración">
+            <Tab style="-fx-background-color: #FFFEB0;" text="Options">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtInsert" layoutX="14.0" layoutY="37.0" prefHeight="28.0" prefWidth="404.0" promptText="Escriba una Palabra para Guardarla" style="-fx-background-color: transparent; -fx-border-color: darkSeaGreen; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button fx:id="btnInsert" layoutX="439.0" layoutY="34.0" minWidth="100.0" mnemonicParsing="false" onAction="#insert" text="Guardar">
+                        <TextField fx:id="txtInsert" layoutX="14.0" layoutY="37.0" prefHeight="28.0" prefWidth="404.0" promptText="Write a word to insert" style="-fx-background-color: transparent; -fx-border-color: darkSeaGreen; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button fx:id="btnInsert" layoutX="439.0" layoutY="34.0" minWidth="100.0" mnemonicParsing="false" onAction="#insert" style="-fx-background-color: #9BFFB5;" text="Insert">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtRemove" layoutX="14.0" layoutY="110.0" prefHeight="28.0" prefWidth="405.0" promptText="Escriba una Palabra para Eliminarla" style="-fx-background-color: transparent; -fx-border-color: indianred; -fx-border-width: 0px 0px 3px 0px;" />
-                        <Button layoutX="439.0" layoutY="107.0" minWidth="100.0" mnemonicParsing="false" onAction="#remove" text="Eliminar">
+                        <TextField fx:id="txtRemove" layoutX="14.0" layoutY="110.0" prefHeight="28.0" prefWidth="405.0" promptText="Wirte a word to delete" style="-fx-background-color: transparent; -fx-border-color: indianred; -fx-border-width: 0px 0px 3px 0px;" />
+                        <Button layoutX="439.0" layoutY="107.0" minWidth="100.0" mnemonicParsing="false" onAction="#remove" style="-fx-background-color: #FF9B9B;" text="Delete">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="14.0" layoutY="191.0" text="Otras Opciones:">
+                        <Label layoutX="14.0" layoutY="191.0" text="Other Options:">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Button layoutX="14.0" layoutY="233.0" minWidth="220.0" mnemonicParsing="false" onAction="#downloadDict" text="Descargar Diccionario">
+                        <Button layoutX="14.0" layoutY="233.0" minWidth="220.0" mnemonicParsing="false" onAction="#downloadDict" style="-fx-background-color: #EDB0FF;" text="Download Dictionary">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="290.0" minWidth="220.0" mnemonicParsing="false" onAction="#uploadDict" text="Subir Diccionario">
+                        <Button layoutX="14.0" layoutY="290.0" minWidth="220.0" mnemonicParsing="false" onAction="#uploadDict" style="-fx-background-color: #EDB0FF;" text="Upload Dictionary">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
@@ -185,9 +185,9 @@
       </TabPane>
    </center>
    <left>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F8EFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab closable="false" text="Diccionario">
+          <Tab closable="false" style="-fx-background-color: #EDB0FF;" text="Dictionary">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>

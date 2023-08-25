@@ -126,11 +126,11 @@ public class StatspanelController implements Initializable {
         
         
         categoryAxis.setCategories(FXCollections.<String>observableList(lengths));
-        categoryAxis.setLabel("Longitudes");
+        categoryAxis.setLabel("Lengths");
        
          
-        totalAxis.setLabel("Frecuencia Absoluta");
-        series.setName("Frecuencias");
+        totalAxis.setLabel("Absolute Frequency");
+        series.setName("Frequencys");
         
         stackedBarChart.getData().addAll(series);
         
